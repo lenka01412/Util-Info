@@ -1,2 +1,2 @@
-include ':app', ':libinfo'
+include ':app', ':libinfo', ':logx-release'
 rootProject.name='gradelib'

@@ -1,4 +1,27 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+ext{
+    bintrayRepo = "infoLib"
+    bintrayName = "com.tibis.info"
+
+    libraryName = 'libinfo'
+
+    publishedGroupId = 'com.tibis.info'
+    artifact = 'libinfo'
+    libraryVersion = '1.0.0'
+
+    libraryDescription = 'A test library public'
+    siteUrl = 'https://github.com/lenka01412/Util-Info'
+    gitUrl = 'https://github.com/lenka01412/Util-Info.git'
+    developerId = 'lenka32402064'
+    developerName = 'lenka'
+    developerEmail = 'lenka01412@gmail.com'
+    licenseName = 'Tha Apache Software License, Verison 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
 
 android {
     compileSdkVersion 29
@@ -27,10 +50,16 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'androidx.test:runner:1.0.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation project(path: ':logx-release')
+}
+
+if(project.rootProject.file('local.properties').exists()){
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
 }
 
 //ext {
